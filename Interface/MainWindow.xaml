@@ -1,0 +1,76 @@
+﻿<Window x:Class="Interface.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Interface"
+        mc:Ignorable="d"
+        Title="Test Your API" Height="768" Width="1024">
+    <Grid>
+        <TabControl x:Name="tabControl" Margin="0,0,0,0">
+            <TabItem Header="SOAP">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
+                    <Label x:Name="txtSoapUrl"  Content="URL: " HorizontalAlignment="Stretch" Margin="10,10,959.6,665.44" VerticalAlignment="Stretch" Height="Auto" FontWeight="Bold" RenderTransformOrigin="0.526,0.671" TextOptions.TextFormattingMode="Display"  />
+                    <TextBox x:Name="txtboxUrlSoap"  HorizontalAlignment="Stretch" Margin="57,10,10.2,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="Auto" Height="30"/>
+                    <TextBox x:Name="txtboxSoapRequest"  HorizontalAlignment="Left" Margin="10,75.96,20,0" VerticalAlignment="Top" Height="Auto" Width="Auto" />
+                    <TextBox x:Name="txtboxSoapResponse" Height="Auto" Margin="0,75.96,10.2,279.88" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="471.8"/>
+                    <Label x:Name="label" Content="Request" HorizontalAlignment="Left" Margin="25.2,45,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label x:Name="label1" Content="Response" HorizontalAlignment="Right" Margin="0,45,392.746,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Button x:Name="btnSubmitSoap" Content="Submit" HorizontalAlignment="Left" Margin="385.8,447,0,0" VerticalAlignment="Top" Width="96.6" FontWeight="Bold" Click="btnSubmitSoap_Click" Height="29.56"/>
+                    <TabControl Height="223.88" VerticalAlignment="Bottom" Margin="10,0,10.2,10">
+                        <TabItem Header="Authentication">
+
+                        </TabItem>
+                        <TabItem Header="Headers">
+
+                        </TabItem>
+                        <TabItem Header="Assertions">
+
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="REST" Margin="0,0,0,0">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
+                    
+                        
+                    
+                    <Label x:Name="txtRestpUrl"  Content="URL:" HorizontalAlignment="Stretch" Margin="92.296,10.31,856.504,670.29" VerticalAlignment="Stretch" Height="Auto" FontWeight="Bold" RenderTransformOrigin="0.526,0.671" TextOptions.TextFormattingMode="Display"  />
+                    <TextBox x:Name="txtboxUrlRest" Margin="133.254,10.16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="29.84" HorizontalAlignment="Left" Width="349.146"/>
+                    <Label x:Name="paramsName" Content="Params:" FontWeight="Bold" Height="29.84" VerticalAlignment="Top" Margin="0,10,418.666,0" HorizontalAlignment="Right" Width="63.334"/>
+                    <TextBox x:Name="txtboxParams" HorizontalAlignment="Right" Height="29.84" VerticalAlignment="Top" Width="204.533" Margin="0,10,222.666,0"/>
+                    <TextBox x:Name="txtboxRestRequest"  HorizontalAlignment="Left" Margin="10,75.96,0,0" VerticalAlignment="Top" Height="354.6" Width="472.4" AcceptsReturn="True" AutoWordSelection="True" />
+                    <TextBox x:Name="txtboxRestResponse" Height="Auto" Margin="0,75.96,10.2,279.88" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="471.8"/>
+                    <Label x:Name="restRequestname" Content="Request" HorizontalAlignment="Left" Margin="25.2,45,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label x:Name="restResponsename" Content="Response" HorizontalAlignment="Right" Margin="0,45,392.746,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Button x:Name="btnSubmitRest" Content="Submit" HorizontalAlignment="Left" Margin="385.8,447,0,0" VerticalAlignment="Top" Width="96.6" FontWeight="Bold" Click="btnSubmitRest_Click" Height="29.56"/>
+                    <TabControl Height="223.88" VerticalAlignment="Bottom" Margin="10,0,10.2,10">
+                        <TabItem Header="Authentication">
+
+                        </TabItem>
+                        <TabItem Header="Headers">
+
+                        </TabItem>
+                        <TabItem Header="Assertions">
+
+                        </TabItem>
+                    </TabControl>
+                    <ComboBox x:Name="dropdownMethod" HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" VerticalAlignment="Top" Width="77.296" SelectedIndex="0" FontWeight="Bold">
+                        <ComboBoxItem Content="GET" FontWeight="Bold" HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="POST" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <ComboBoxItem Content="PUT" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <ComboBoxItem Content="DELETE" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                    </ComboBox>
+                    <ComboBox x:Name="contentTypeList" HorizontalAlignment="Right" Margin="0,10.31,10.2,0" VerticalAlignment="Top" Width="186.4" Height="29.53">
+                        <ComboBoxItem Content="application/json" IsSelected="True"/>
+                        <ComboBoxItem Content="application/xml"/>
+                        <ComboBoxItem Content="text/xml"/>
+                        <ComboBoxItem Content="multipart/form-data"/>
+                    </ComboBox>
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
