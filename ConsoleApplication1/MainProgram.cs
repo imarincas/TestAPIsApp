@@ -1,4 +1,4 @@
-﻿
+﻿using DataAccess.Repositories;
 using RESTApi;
 using SOAPApi;
 using System;
@@ -17,6 +17,11 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
 
+
+            var userRepo = new UsersRepository();
+            var user = userRepo.GetUser("ionel");
+
+
             //var restClient = new RestClient();
             //restClient.EndPoint = @"https://httpbin.org";
             //restClient.Method = Verb.GET;
@@ -26,29 +31,25 @@ namespace ConsoleApplication1
             //Console.ReadKey();
 
 
-            var soapClient = new SoapClient();
-            string soapResult;
-            soapClient.EndPoint = @"http://www.webservicex.com/globalweather.asmx";
-            soapClient.XmlData = @"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:web=""http://www.webserviceX.NET"">
-                                   <soapenv:Header/>
-                                   <soapenv:Body>
-                                   <web:GetCitiesByCountry>
-                                   <!--Optional:-->
-                                   <web:CountryName>Romania</web:CountryName>
-                                   </web:GetCitiesByCountry>
-                                   </soapenv:Body>
-                                   </soapenv:Envelope>";
+            //var soapclient = new soapclient();
+            //soapclient.endpoint = @"http://www.webservicex.com/globalweather.asmx";
+            //soapclient.xmldata = @"<soapenv:envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:web=""http://www.webservicex.net"">
+            //                       <soapenv:header/>
+            //                       <soapenv:body>
+            //                       <web:getcitiesbycountry>
+            //                       <!--optional:-->
+            //                       <web:countryname>romania</web:countryname>
+            //                       </web:getcitiesbycountry>
+            //                       </soapenv:body>
+            //                       </soapenv:envelope>";
 
-           using ( var soapResponse = soapClient.GetResponse()){
-                using (StreamReader reader = new StreamReader(soapResponse.GetResponseStream()))
-                {
-                    soapResult = reader.ReadToEnd();
-                }
-                Console.WriteLine(Utils.PrettyXml(soapResult));
-                Console.ReadKey();
-            }
 
-           
+            //var response = soapclient.execute();
+            //console.writeline(utils.prettyxml(response));
+            //console.readkey();
+
+
+
 
 
             //List<string> metode = new List<string>();

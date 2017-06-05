@@ -31,21 +31,13 @@ namespace Interface
         private void btnSubmitSoap_Click(object sender, RoutedEventArgs e)
         {
             var soapClient = new SoapClient();
-            string soapResult;
             soapClient.EndPoint = txtboxUrlSoap.Text;
             soapClient.XmlData = txtboxSoapRequest.Text;
 
-            using (var soapResponse = soapClient.GetResponse())
-            {
-                using (StreamReader reader = new StreamReader(soapResponse.GetResponseStream()))
-                {
-                    soapResult = reader.ReadToEnd();
-                }
-                 txtboxSoapResponse.Text= Utils.PrettyXml(soapResult);
-               // txtboxSoapResponse.Text = soapResult;
-
-            }
+            var soapResponse = soapClient.Execute();
+            txtboxSoapResponse.Text = Utils.PrettyXml(soapResponse);
         }
+        
 
         private void btnSubmitRest_Click(object sender, RoutedEventArgs e)
         {

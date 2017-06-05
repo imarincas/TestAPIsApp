@@ -12,7 +12,7 @@
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
                     <Label x:Name="txtSoapUrl"  Content="URL: " HorizontalAlignment="Stretch" Margin="10,10,959.6,665.44" VerticalAlignment="Stretch" Height="Auto" FontWeight="Bold" RenderTransformOrigin="0.526,0.671" TextOptions.TextFormattingMode="Display"  />
                     <TextBox x:Name="txtboxUrlSoap"  HorizontalAlignment="Stretch" Margin="57,10,10.2,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="Auto" Height="30"/>
-                    <TextBox x:Name="txtboxSoapRequest"  HorizontalAlignment="Left" Margin="10,75.96,20,0" VerticalAlignment="Top" Height="Auto" Width="Auto" />
+                    <TextBox x:Name="txtboxSoapRequest"  HorizontalAlignment="Left" Margin="10,75.96,20,0" VerticalAlignment="Top" Height="350" Width="350" AcceptsReturn="True" />
                     <TextBox x:Name="txtboxSoapResponse" Height="Auto" Margin="0,75.96,10.2,279.88" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="471.8"/>
                     <Label x:Name="label" Content="Request" HorizontalAlignment="Left" Margin="25.2,45,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label x:Name="label1" Content="Response" HorizontalAlignment="Right" Margin="0,45,392.746,0" VerticalAlignment="Top" FontWeight="Bold"/>

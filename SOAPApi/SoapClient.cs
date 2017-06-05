@@ -40,5 +40,27 @@ namespace SOAPApi
 
             return webResponse;
         }
+
+        public string Execute()
+        {
+            HttpWebRequest request = Utils.CreateWebRequest(EndPoint, Header);
+            XmlDocument soapEnvelopeXml = new XmlDocument();
+            soapEnvelopeXml= Utils.CreateSoapEnvelope(XmlData);
+
+            using (Stream stream = request.GetRequestStream())
+            {
+                soapEnvelopeXml.Save(stream);
+            }
+
+            using (WebResponse response = request.GetResponse())
+            {
+                using (StreamReader rd = new StreamReader(response.GetResponseStream()))
+                {
+                    var  soapResult = rd.ReadToEnd();
+                  //  Console.WriteLine(soapResult);
+                    return soapResult;
+                }
+            }
+        }
     }
 }

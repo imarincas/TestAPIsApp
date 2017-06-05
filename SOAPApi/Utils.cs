@@ -52,7 +52,7 @@ namespace SOAPApi
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             if (header != null)
             {
-                request.Headers.Add(header.Header, header.Value);
+                request.Headers.Add(header.Name, header.Value);
             }
            
             request.ContentType = "text/xml;charset=\"utf-8\"";
