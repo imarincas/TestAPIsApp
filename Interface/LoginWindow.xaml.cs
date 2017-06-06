@@ -29,13 +29,31 @@ namespace Interface
         {
             var userRepo = new UsersRepository();
             var user = userRepo.GetUser(txt_Username.Text);
-            if (txt_Username.Text==user.Username && txt_Password.Text == user.Password)
+            if (!string.IsNullOrEmpty(txt_Username.Text) && !string.IsNullOrEmpty(txt_Password.Password))
             {
-                MessageBox.Show("Login succesfully");
-                this.Hide();
-                MainWindow main = new MainWindow();
-                main.Show();
+                if (txt_Username.Text == user.Username && txt_Password.Password == user.Password)
+                {
+                    // MessageBox.Show("Login succesfully");
+                    this.Hide();
+                    MainWindow main = new MainWindow();
+                    main.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect username or password!");
+                }
             }
+            else
+            {
+                MessageBox.Show("Please type username and password!");
+            }
+        }
+
+        private void btn_register_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow register = new RegisterWindow();
+            this.Hide();
+            register.Show();
         }
     }
 }
