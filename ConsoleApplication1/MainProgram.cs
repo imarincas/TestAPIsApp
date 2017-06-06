@@ -22,6 +22,7 @@ namespace ConsoleApplication1
             var user = userRepo.GetUser("ionel");
 
 
+
             //var restClient = new RestClient();
             //restClient.EndPoint = @"https://httpbin.org";
             //restClient.Method = Verb.GET;
