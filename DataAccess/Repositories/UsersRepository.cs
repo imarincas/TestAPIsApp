@@ -26,6 +26,9 @@ namespace DataAccess.Repositories
                     userEntry.Id = int.Parse(dataReader["id"].ToString());
                     userEntry.Username = dataReader["username"].ToString();
                     userEntry.Password = dataReader["password"].ToString();
+                    userEntry.Firstname = dataReader["firstname"].ToString();
+                    userEntry.Lastname = dataReader["lastname"].ToString();
+                    userEntry.Email = dataReader["email"].ToString();
                 }
 
                 return userEntry;

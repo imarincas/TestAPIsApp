@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -41,26 +42,41 @@ namespace SOAPApi
             return webResponse;
         }
 
-        public string Execute()
+        public Tuple<TimeSpan?, string> Execute()
         {
+            string soapResult;
             HttpWebRequest request = Utils.CreateWebRequest(EndPoint, Header);
             XmlDocument soapEnvelopeXml = new XmlDocument();
-            soapEnvelopeXml= Utils.CreateSoapEnvelope(XmlData);
+            soapEnvelopeXml = Utils.CreateSoapEnvelope(XmlData);
 
             using (Stream stream = request.GetRequestStream())
             {
                 soapEnvelopeXml.Save(stream);
             }
 
-            using (WebResponse response = request.GetResponse())
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            try
             {
-                using (StreamReader rd = new StreamReader(response.GetResponseStream()))
+                using (WebResponse response = request.GetResponse())
                 {
-                    var  soapResult = rd.ReadToEnd();
-                  //  Console.WriteLine(soapResult);
-                    return soapResult;
+                    using (StreamReader rd = new StreamReader(response.GetResponseStream()))
+                    {
+
+                        soapResult = rd.ReadToEnd();
+                        //  Console.WriteLine(soapResult);
+                        //return soapResult;
+                    }
                 }
+                sw.Stop();
+                return new Tuple<TimeSpan?, string>(sw.Elapsed, soapResult);
             }
+            catch (Exception e)
+            {
+                return new Tuple<TimeSpan?, string>(null,e.Message);
+            }
+           
+            
         }
     }
 }

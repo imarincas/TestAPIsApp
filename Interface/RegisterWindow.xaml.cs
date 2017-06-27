@@ -28,14 +28,20 @@ namespace Interface
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            byte[] data = Encoding.ASCII.GetBytes(passwordBox.Password);
+            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+            string hashedPassword = Encoding.ASCII.GetString(data);
+
             var user = new UsersDTO
             {
                 Username = txt_username.Text,
                 Firstname = txt_firstname.Text,
                 Lastname = txt_lastname.Text,
                 Email = txt_email.Text,
-                Password = passwordBox.Password
+                Password = hashedPassword
             };
+
+
             var userRepo = new UsersRepository();
             if (string.IsNullOrEmpty(userRepo.GetUser(txt_username.Text).Username))
             {

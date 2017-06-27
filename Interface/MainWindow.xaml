@@ -7,20 +7,18 @@
         mc:Ignorable="d"
         Title="Test Your API" Height="768" Width="1024">
     <Grid>
-        <TabControl x:Name="tabControl" Margin="0,0,0,0">
+        <TabControl x:Name="tabControl" Margin="0,0,-0.4,0.4" SelectionChanged="tabControl_SelectionChanged">
             <TabItem Header="SOAP">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
                     <Label x:Name="txtSoapUrl"  Content="URL: " HorizontalAlignment="Stretch" Margin="10,10,959.6,665.44" VerticalAlignment="Stretch" Height="Auto" FontWeight="Bold" RenderTransformOrigin="0.526,0.671" TextOptions.TextFormattingMode="Display"  />
                     <TextBox x:Name="txtboxUrlSoap"  HorizontalAlignment="Stretch" Margin="57,10,10.2,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="Auto" Height="30"/>
-                    <TextBox x:Name="txtboxSoapRequest"  HorizontalAlignment="Left" Margin="10,75.96,20,0" VerticalAlignment="Top" Height="350" Width="350" AcceptsReturn="True" />
-                    <TextBox x:Name="txtboxSoapResponse" Height="Auto" Margin="0,75.96,10.2,279.88" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="471.8"/>
+                    <TextBox x:Name="txtboxSoapRequest"  ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Height="350" Width="432" AcceptsReturn="True" />
+                    <TextBox x:Name="txtboxSoapResponse" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Height="Auto" Margin="0,75.96,10.2,279.88" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="471.8"/>
                     <Label x:Name="label" Content="Request" HorizontalAlignment="Left" Margin="25.2,45,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label x:Name="label1" Content="Response" HorizontalAlignment="Right" Margin="0,45,392.746,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Button x:Name="btnSubmitSoap" Content="Submit" HorizontalAlignment="Left" Margin="385.8,447,0,0" VerticalAlignment="Top" Width="96.6" FontWeight="Bold" Click="btnSubmitSoap_Click" Height="29.56"/>
+                    <Button x:Name="btnSubmitSoap" Content="Submit" HorizontalAlignment="Left" Margin="345,447,0,0" VerticalAlignment="Top" Width="97" FontWeight="Bold" Click="btnSubmitSoap_Click" Height="30"/>
                     <TabControl Height="223.88" VerticalAlignment="Bottom" Margin="10,0,10.2,10">
-                        <TabItem Header="Authentication">
 
-                        </TabItem>
                         <TabItem Header="Headers">
 
                         </TabItem>
@@ -28,13 +26,15 @@
 
                         </TabItem>
                     </TabControl>
+                    <Label x:Name="timeProcessing_Soap" Content="Processing Time: " HorizontalAlignment="Left" Height="29" Margin="747,448,0,0" VerticalAlignment="Top" Width="210" FontWeight="Bold"/>
+                    <Button x:Name="saveDbSoap" Content="Save to DB" HorizontalAlignment="Left" Margin="557,447,0,0" VerticalAlignment="Top" Width="100" Height="29" FontWeight="Bold"/>
                 </Grid>
             </TabItem>
             <TabItem Header="REST" Margin="0,0,0,0">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
-                    
-                        
-                    
+
+
+
                     <Label x:Name="txtRestpUrl"  Content="URL:" HorizontalAlignment="Stretch" Margin="92.296,10.31,856.504,670.29" VerticalAlignment="Stretch" Height="Auto" FontWeight="Bold" RenderTransformOrigin="0.526,0.671" TextOptions.TextFormattingMode="Display"  />
                     <TextBox x:Name="txtboxUrlRest" Margin="133.254,10.16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="29.84" HorizontalAlignment="Left" Width="349.146"/>
                     <Label x:Name="paramsName" Content="Params:" FontWeight="Bold" Height="29.84" VerticalAlignment="Top" Margin="0,10,418.666,0" HorizontalAlignment="Right" Width="63.334"/>
@@ -43,17 +43,19 @@
                     <TextBox x:Name="txtboxRestResponse" Height="Auto" Margin="0,75.96,10.2,279.88" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="471.8"/>
                     <Label x:Name="restRequestname" Content="Request" HorizontalAlignment="Left" Margin="25.2,45,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label x:Name="restResponsename" Content="Response" HorizontalAlignment="Right" Margin="0,45,392.746,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Button x:Name="btnSubmitRest" Content="Submit" HorizontalAlignment="Left" Margin="385.8,447,0,0" VerticalAlignment="Top" Width="96.6" FontWeight="Bold" Click="btnSubmitRest_Click" Height="29.56"/>
+                    <Button x:Name="btnSubmitRest" Content="Submit" HorizontalAlignment="Left" Margin="386,446,0,0" VerticalAlignment="Top" Width="96" FontWeight="Bold" Click="btnSubmitRest_Click" Height="30"/>
                     <TabControl Height="223.88" VerticalAlignment="Bottom" Margin="10,0,10.2,10">
-                        <TabItem Header="Authentication">
 
-                        </TabItem>
                         <TabItem Header="Headers">
 
                         </TabItem>
                         <TabItem Header="Assertions">
 
                         </TabItem>
+
+
+
+
                     </TabControl>
                     <ComboBox x:Name="dropdownMethod" HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" VerticalAlignment="Top" Width="77.296" SelectedIndex="0" FontWeight="Bold">
                         <ComboBoxItem Content="GET" FontWeight="Bold" HorizontalAlignment="Left" />
@@ -68,9 +70,41 @@
                         <ComboBoxItem Content="text/xml"/>
                         <ComboBoxItem Content="multipart/form-data"/>
                     </ComboBox>
+                    <Label x:Name="timeProcessing_Rest" Content="Processing Time: " HorizontalAlignment="Left" Height="30" Margin="752,444,0,0" VerticalAlignment="Top" Width="210" FontWeight="Bold"/>
+                    <Button x:Name="saveDbRest" Content="Save to DB" HorizontalAlignment="Left" Margin="597,445,0,0" VerticalAlignment="Top" Width="100" Height="29" FontWeight="Bold"/>
                 </Grid>
 
             </TabItem>
+            <TabItem Header="TEST Execution" Margin="-2.2,-2,2.4,0">
+                <Grid Height="703" Width="1003" Margin="0,0,9,0">
+                    <Label x:Name="label3" Content="Select service name:" Margin="112,51,761,612" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Button x:Name="button" Content="Executa testele pentru serviciul selectat" Margin="112,146,551,492" FontWeight="Bold"/>
+                    <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Height="40" Margin="272,51,0,0" VerticalAlignment="Top" Width="180" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="User profile" Margin="-2.2,-2,2.4,0">
+                <Grid>
+                    <Label x:Name="label2" Content="First name:" Margin="62,34,845,645.6" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Label x:Name="label9" Content="Last name:" Margin="62,99,845,580.6" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Label x:Name="label4" Content="Email:" HorizontalAlignment="Left" Margin="47,164,0,0" VerticalAlignment="Top" Width="105" Height="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                    <Label x:Name="label5" Content="Username:" HorizontalAlignment="Left" Margin="62,226,0,0" VerticalAlignment="Top" Width="105" Height="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                    <Label x:Name="label6" Content="Password: " Margin="62,284,845,390.6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                    <Button x:Name="button1" Content="Update Details" HorizontalAlignment="Left" Margin="112,384,0,0" VerticalAlignment="Top" Width="165" Height="45"/>
+                    <TextBox x:Name="firstname" HorizontalAlignment="Left" Height="40" Margin="297,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                    <TextBox x:Name="lastname" HorizontalAlignment="Left" Height="40" Margin="297,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                    <TextBox x:Name="email" HorizontalAlignment="Left" Height="40" Margin="297,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                    <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="297,284,0,0" VerticalAlignment="Top" Height="40" Width="135" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Label x:Name="label7" Content="Service name:" HorizontalAlignment="Left" Margin="552,50,0,0" VerticalAlignment="Top" Height="40" Width="130" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                    <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="727,50,0,0" VerticalAlignment="Top" Width="250" Height="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                    <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="40" Margin="297,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+
+
+
+
+
+
         </TabControl>
     </Grid>
 </Window>

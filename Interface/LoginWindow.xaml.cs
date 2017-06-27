@@ -29,13 +29,18 @@ namespace Interface
         {
             var userRepo = new UsersRepository();
             var user = userRepo.GetUser(txt_Username.Text);
+
+            byte[] data = Encoding.ASCII.GetBytes(txt_Password.Password);
+            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+            string hashedPassword = Encoding.ASCII.GetString(data);
+
             if (!string.IsNullOrEmpty(txt_Username.Text) && !string.IsNullOrEmpty(txt_Password.Password))
             {
-                if (txt_Username.Text == user.Username && txt_Password.Password == user.Password)
+                if (txt_Username.Text == user.Username && hashedPassword == user.Password)
                 {
                     // MessageBox.Show("Login succesfully");
                     this.Hide();
-                    MainWindow main = new MainWindow();
+                    MainWindow main = new MainWindow(user);
                     main.Show();
                 }
                 else

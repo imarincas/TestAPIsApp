@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -31,13 +32,16 @@ namespace RESTApi
             PostData = postData;
         }
 
-        public string Request(string parameters)
+        public Tuple<TimeSpan, string> ProcessRequest(string parameters)
         {
             var request = (HttpWebRequest)WebRequest.Create(EndPoint + parameters);
             request.Method = Method.ToString();
             request.ContentLength = 0;
             request.ContentType = ContentType;
 
+
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             using (var response = (HttpWebResponse)request.GetResponse())
             {
                 var responseValue = string.Empty;
@@ -56,8 +60,8 @@ namespace RESTApi
                             responseValue = reader.ReadToEnd();
                         }
                 }
-
-                return responseValue;
+                sw.Stop();
+                return new Tuple<TimeSpan, string>(sw.Elapsed, responseValue);
             }
         }
     }
