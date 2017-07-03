@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using UserManagement;
 
 namespace Interface
 {
@@ -28,36 +29,28 @@ namespace Interface
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            byte[] data = Encoding.ASCII.GetBytes(passwordBox.Password);
-            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
-            string hashedPassword = Encoding.ASCII.GetString(data);
-
-            var user = new UsersDTO
+            if (!string.IsNullOrEmpty(txt_username.Text))
             {
-                Username = txt_username.Text,
-                Firstname = txt_firstname.Text,
-                Lastname = txt_lastname.Text,
-                Email = txt_email.Text,
-                Password = hashedPassword
-            };
-
-
-            var userRepo = new UsersRepository();
-            if (string.IsNullOrEmpty(userRepo.GetUser(txt_username.Text).Username))
-            {
-                if (userRepo.InsertUserInDB(user))
+                if (!UserController.CheckUsername(txt_username.Text))
                 {
-                    MessageBox.Show("Registration succesfully.");
-                    this.Hide();
-                    LoginWindow lgn = new LoginWindow();
-                    lgn.Show();
+                    if (UserController.RegisterUser(txt_username.Text, passwordBox.Password, txt_firstname.Text, txt_lastname.Text, txt_email.Text))
+                    {
+                        MessageBox.Show("Registration succesfully.");
+                        this.Hide();
+                        LoginWindow lgn = new LoginWindow();
+                        lgn.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while registration.");
+
+                    }
                 }
-            }else
-            {
-                MessageBox.Show("User already exists.");
-              
+                else
+                {
+                    MessageBox.Show("User already exists.");
+                }
             }
-            
         }
     }
 }

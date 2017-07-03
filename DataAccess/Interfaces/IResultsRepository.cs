@@ -9,7 +9,7 @@ namespace DataAccess.Interfaces
 {
     public interface IResultsRepository
     {
-        List<ResultDTO> GetResults(UsersDTO user);
-        bool InsertResultInDB(ResultDTO result);
+        List<TestsDTO> GetResults(UsersDTO user);
+        bool InsertResultInDB(TestsDTO result);
     }
 }

@@ -22,7 +22,7 @@ namespace Interface
 
         private void btnSubmitSoap_Click(object sender, RoutedEventArgs e)
         {
-            var soapClient = new SoapClient();
+            var soapClient = new SoapClientController();
             soapClient.EndPoint = txtboxUrlSoap.Text;
             if (Utils.ValidateXml(txtboxSoapRequest.Text)== txtboxSoapRequest.Text)
             {
@@ -30,7 +30,7 @@ namespace Interface
                 var soapResponse = soapClient.Execute();
                 txtboxSoapResponse.Text = Utils.PrettyXml(soapResponse.Item2);
                 timeProcessing_Soap.Content = "Processing time: " + soapResponse.Item1;
-                var result = new ResultDTO
+                var result = new TestsDTO
                 {
                     Request = soapClient.XmlData,
                     Response = Utils.PrettyXml(soapResponse.Item2),
@@ -51,7 +51,7 @@ namespace Interface
 
         private void btnSubmitRest_Click(object sender, RoutedEventArgs e)
         {
-            var restClient = new RestClient();
+            var restClient = new RestClientController();
             restClient.EndPoint = txtboxUrlRest.Text;
             restClient.Method = dropdownMethod.Text;
             restClient.PostData = txtboxRestRequest.Text;
@@ -60,7 +60,7 @@ namespace Interface
             txtboxRestResponse.Text = JsonFormater.FormatJson(response.Item2);
             timeProcessing_Rest.Content = "Processing time: " + response.Item1;
 
-            var result = new ResultDTO {
+            var result = new TestsDTO {
                 Request = restClient.PostData,
                 Response = response.Item2,
                 ProcessingTime = response.Item1,

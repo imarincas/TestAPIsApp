@@ -10,7 +10,7 @@ using System.Xml;
 
 namespace SOAPApi
 {
-    public class SoapClient
+    public class SoapClientController
     {
         public string EndPoint { get; set; }
         public string XmlData { get; set; }
@@ -18,7 +18,7 @@ namespace SOAPApi
         public string soapResult;
 
 
-        public SoapClient()
+        public SoapClientController()
         {
 
         }

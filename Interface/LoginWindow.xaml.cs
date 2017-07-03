@@ -1,4 +1,5 @@
-﻿using DataAccess.Repositories;
+﻿using DataAccess.DTO;
+using DataAccess.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using UserManagement;
 
 namespace Interface
 {
@@ -27,16 +29,10 @@ namespace Interface
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            var userRepo = new UsersRepository();
-            var user = userRepo.GetUser(txt_Username.Text);
-
-            byte[] data = Encoding.ASCII.GetBytes(txt_Password.Password);
-            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
-            string hashedPassword = Encoding.ASCII.GetString(data);
-
             if (!string.IsNullOrEmpty(txt_Username.Text) && !string.IsNullOrEmpty(txt_Password.Password))
             {
-                if (txt_Username.Text == user.Username && hashedPassword == user.Password)
+               var user = UserController.LoginUser(txt_Username.Text, txt_Password.Password);
+                if (!user.Equals(null))
                 {
                     // MessageBox.Show("Login succesfully");
                     this.Hide();

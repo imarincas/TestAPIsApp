@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Test Your API" Height="768" Width="1024">
     <Grid>
-        <TabControl x:Name="tabControl" Margin="0,0,-0.4,0.4" SelectionChanged="tabControl_SelectionChanged">
+        <TabControl x:Name="tabControl" Margin="0,0,-0.4,0.4" SelectionChanged="tabControl_SelectionChanged" BorderThickness="4">
             <TabItem Header="SOAP">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
                     <Label x:Name="txtSoapUrl"  Content="URL: " HorizontalAlignment="Stretch" Margin="10,10,959.6,665.44" VerticalAlignment="Stretch" Height="Auto" FontWeight="Bold" RenderTransformOrigin="0.526,0.671" TextOptions.TextFormattingMode="Display"  />
@@ -83,13 +83,13 @@
                 </Grid>
             </TabItem>
             <TabItem Header="User profile" Margin="-2.2,-2,2.4,0">
-                <Grid>
+                <Grid Margin="40,35,-40,-35.4">
                     <Label x:Name="label2" Content="First name:" Margin="62,34,845,645.6" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                     <Label x:Name="label9" Content="Last name:" Margin="62,99,845,580.6" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                     <Label x:Name="label4" Content="Email:" HorizontalAlignment="Left" Margin="47,164,0,0" VerticalAlignment="Top" Width="105" Height="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
                     <Label x:Name="label5" Content="Username:" HorizontalAlignment="Left" Margin="62,226,0,0" VerticalAlignment="Top" Width="105" Height="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
                     <Label x:Name="label6" Content="Password: " Margin="62,284,845,390.6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
-                    <Button x:Name="button1" Content="Update Details" HorizontalAlignment="Left" Margin="112,384,0,0" VerticalAlignment="Top" Width="165" Height="45"/>
+                    <Button x:Name="button1" Content="Update Details" HorizontalAlignment="Left" Margin="112,384,0,0" VerticalAlignment="Top" Width="165" Height="45" FontWeight="Bold" BorderThickness="4"/>
                     <TextBox x:Name="firstname" HorizontalAlignment="Left" Height="40" Margin="297,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
                     <TextBox x:Name="lastname" HorizontalAlignment="Left" Height="40" Margin="297,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
                     <TextBox x:Name="email" HorizontalAlignment="Left" Height="40" Margin="297,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
@@ -97,8 +97,10 @@
                     <Label x:Name="label7" Content="Service name:" HorizontalAlignment="Left" Margin="552,50,0,0" VerticalAlignment="Top" Height="40" Width="130" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
                     <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="727,50,0,0" VerticalAlignment="Top" Width="250" Height="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
                     <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="40" Margin="297,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                    <Button x:Name="button2" Content="Logout" Margin="477,384,330,281" FontWeight="Bold" BorderThickness="4"/>
                 </Grid>
             </TabItem>
+
 
 
 

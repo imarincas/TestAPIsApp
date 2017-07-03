@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace RESTApi
 {
-    public class RestClient
+    public class RestClientController
     {
         public string EndPoint { get; set; }
         public string Method { get; set; }
         public string ContentType { get; set; }
         public string PostData { get; set; }
 
-        public RestClient()
+        public RestClientController()
         {
             EndPoint = "";
             Method = "GET";
@@ -24,7 +24,7 @@ namespace RESTApi
             PostData = "";
         }
 
-        public RestClient(string endpoint, string method, string postData, string contentType)
+        public RestClientController(string endpoint, string method, string postData, string contentType)
         {
             EndPoint = endpoint;
             Method = method;
