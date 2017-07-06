@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UserManagement.Model
+namespace AppManagement.Models
 {
-    public class User
+   public class User
     {
         public int Id { get; set; }
         public string Username { get; set; }
@@ -14,6 +14,7 @@ namespace UserManagement.Model
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Email { get; set; }
+        public string ServiceName { get; set; }
 
     }
 }

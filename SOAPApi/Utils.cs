@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Schema;
 
 namespace SOAPApi
 {
@@ -31,11 +27,12 @@ namespace SOAPApi
 
                 var element = XElement.Parse(xml);
 
-                var settings = new XmlWriterSettings();
-                settings.OmitXmlDeclaration = true;
-                settings.Indent = true;
-                settings.NewLineOnAttributes = true;
-
+                var settings = new XmlWriterSettings()
+                {
+                    OmitXmlDeclaration = true,
+                    Indent = true,
+                    NewLineOnAttributes = true
+                };
                 using (var xmlWriter = XmlWriter.Create(stringBuilder, settings))
                 {
                     element.Save(xmlWriter);
@@ -52,7 +49,11 @@ namespace SOAPApi
         public static  XmlDocument CreateSoapEnvelope(string xml)
         {
             XmlDocument soapEnvelop = new XmlDocument();
-            soapEnvelop.LoadXml(xml);
+            if (!string.IsNullOrWhiteSpace(xml))
+            {
+                soapEnvelop.LoadXml(xml);
+            }
+
             return soapEnvelop;
         }
 
@@ -78,35 +79,6 @@ namespace SOAPApi
             request.Method = "POST";
             return request;
         }
-
-        public static string ValidateXml(string doc)
-        {
-            ValidationEventHandler eventHandler = new ValidationEventHandler(ValidationEventHandler);
-            try
-            {
-                var xml = new XmlDocument();
-                xml.LoadXml(doc);
-                xml.Validate(eventHandler);
-                return doc;
-            }catch (Exception ex)
-            {
-                return ex.Message;
-            }
-          
-        }
-
-        static void ValidationEventHandler(object sender, ValidationEventArgs e)
-        {
-            switch (e.Severity)
-            {
-                case XmlSeverityType.Error:
-                    Console.WriteLine("Error: {0}", e.Message);
-                    break;
-                case XmlSeverityType.Warning:
-                    Console.WriteLine("Warning {0}", e.Message);
-                    break;
-            }
-
-        }
+                       
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.DTO
+namespace AppManagement.Models
 {
-    public class TestsDTO
+    public class Test
     {
         public int Id { get; set; }
         public string Request { get; set; }
@@ -15,6 +15,10 @@ namespace DataAccess.DTO
         public int UserId { get; set; }
         public string Uri { get; set; }
         public string ServiceName { get; set; }
+        public string Method { get; set; }
+        public string ContentType { get; set; }
+        public string Params { get; set; }
+
 
 
     }

@@ -9,17 +9,18 @@ namespace DataAccess.Repositories
     public class ResultsRepository : IResultsRepository
     {
 
-        public bool InsertResultInDB(TestsDTO result)
+        public bool InsertTestcaseInDB(TestsDTO testcase)
         {
             using (var con = new SqlConnection(Config.ConnectionStings.AppDatabase))
             {
-                var cmd = new SqlCommand("INSERT INTO TResults VALUES ( @request, @response, @userId, @procTime, @uri);", con);
+                var cmd = new SqlCommand("INSERT INTO TResults VALUES ( @request, @response, @userId, @procTime, @uri, @servicename);", con);
 
-                cmd.Parameters.Add(new SqlParameter("procTime", result.ProcessingTime));
-                cmd.Parameters.Add(new SqlParameter("request", result.Request));
-                cmd.Parameters.Add(new SqlParameter("response", result.Response));
-                cmd.Parameters.Add(new SqlParameter("userId", result.UserId));
-                cmd.Parameters.Add(new SqlParameter("uri", result.Uri));
+                cmd.Parameters.Add(new SqlParameter("procTime", testcase.ProcessingTime));
+                cmd.Parameters.Add(new SqlParameter("request", testcase.Request));
+                cmd.Parameters.Add(new SqlParameter("response", testcase.Response));
+                cmd.Parameters.Add(new SqlParameter("userId", testcase.UserId));
+                cmd.Parameters.Add(new SqlParameter("uri", testcase.Uri));
+                cmd.Parameters.Add(new SqlParameter("servicename", testcase.ServiceName));
 
                 con.Open();
                 var dataReader = cmd.ExecuteNonQuery();
@@ -29,7 +30,7 @@ namespace DataAccess.Repositories
             }
         }
 
-        public List<TestsDTO> GetResults(UsersDTO user)
+        public List<TestsDTO> GetResults(UserDTO user)
         {
             var resultsList = new List<TestsDTO>();
             using (var con = new SqlConnection(Config.ConnectionStings.AppDatabase))
@@ -54,6 +55,23 @@ namespace DataAccess.Repositories
                     resultsList.Add(resultEntry);
                 }
                 return resultsList;
+            }
+        }
+
+        public List<string> GetServicename()
+        {
+            var serviceList = new List<string>();
+            using (var con = new SqlConnection(Config.ConnectionStings.AppDatabase))
+            {
+                var cmd = new SqlCommand("SELECT ServiceName FROM TESTCASES", con);
+                con.Open();
+                var dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    serviceList.Add(dataReader["ServiceName"].ToString());
+                }
+                return serviceList; 
             }
         }
     }

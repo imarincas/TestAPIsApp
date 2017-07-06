@@ -1,13 +1,9 @@
-﻿using DataAccess.DTO;
-using DataAccess.Interfaces;
+﻿using AppManagement.Models;
+using DataAccess.DTO;
 using DataAccess.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace UserManagement
+namespace AppManagement.Controller
 {
     public class UserController
     {
@@ -25,7 +21,25 @@ namespace UserManagement
                 return false;
             }
         }
-        public static UsersDTO LoginUser(string username, string password)
+        public static bool CheckUser(User user)
+        {
+            var userRepo = new UsersRepository();
+            var userDTO = userRepo.GetUser(user.Username);
+
+            if (user.Username == userDTO.Username )
+            {
+                if (user.Id == userDTO.Id)
+                {
+                    return false;
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static User LoginUser(string username, string password)
         {
             var userRepo = new UsersRepository();
             var user = userRepo.GetUser(username);
@@ -36,7 +50,13 @@ namespace UserManagement
 
             if (username == user.Username && hashedPassword == user.Password)
             {
-                return user;
+                return new User {
+                Username=user.Username,
+                Password=user.Password,
+                Firstname=user.Firstname,
+                Lastname=user.Lastname,
+                Id=user.Id,
+                Email=user.Email};
             }
             else
             {
@@ -50,7 +70,7 @@ namespace UserManagement
             data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
             string hashedPassword = Encoding.ASCII.GetString(data);
 
-            var user = new UsersDTO
+            var user = new UserDTO
             {
                 Username = username,
                 Firstname = firstname,
@@ -67,6 +87,28 @@ namespace UserManagement
             {
                 return false;
 
+            }
+        }
+
+        public static bool UpdateUser(User user)
+        {
+            var userDTO = new UserDTO
+            {
+                Username = user.Username,
+                Firstname = user.Firstname,
+                Lastname = user.Lastname,
+                Email = user.Email,
+                Password = user.Password,
+                Id=user.Id
+            };
+            var userRepo = new UsersRepository();
+            if (userRepo.UpdateUserDetails(userDTO))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

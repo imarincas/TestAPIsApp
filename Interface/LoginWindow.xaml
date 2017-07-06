@@ -8,14 +8,14 @@
         Title="LoginWindow" Height="400" Width="500">
     <Grid>
         <Label x:Name="label" HorizontalAlignment="Left" Height="35" Margin="155,90,0,0" VerticalAlignment="Top" Width="85"/>
-        <TextBox x:Name="txt_Username" HorizontalAlignment="Left" Height="35" Margin="240,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" VerticalContentAlignment="Center" />
+        <TextBox x:Name="txt_Username" HorizontalAlignment="Left" Height="35" Margin="240,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" />
         <Button x:Name="button" Content="Login" HorizontalAlignment="Center" Height="40" Margin="310,225,73.6,0" VerticalAlignment="Top" Width="110" Click="button_Click" BorderThickness="4" ClipToBounds="True" FontWeight="Bold" FontSize="16"/>
         <Label x:Name="label1" Content="Username" HorizontalAlignment="Left" Height="35" Margin="65,72,0,0" VerticalAlignment="Top" Width="90" FontWeight="Bold"/>
         <Label x:Name="label2" Content="Password" HorizontalAlignment="Left" Height="35" Margin="65,129,0,0" VerticalAlignment="Top" Width="90" FontWeight="Bold"/>
         <Button x:Name="btn_register" Content="Register" HorizontalAlignment="Left" Height="40" Margin="65,225,0,0" VerticalAlignment="Top" Width="110" BorderThickness="4" FontWeight="Bold" FontSize="16" Click="btn_register_Click"/>
-        <PasswordBox x:Name="txt_Password" HorizontalAlignment="Left" Height="35" Margin="240,130,0,0" VerticalAlignment="Top" Width="210" VerticalContentAlignment="Center"/>
+        <PasswordBox x:Name="txt_Password" HorizontalAlignment="Left" Height="35" Margin="240,130,0,0" VerticalAlignment="Top" Width="210" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
         <Label x:Name="label3" Content="Service name:" HorizontalAlignment="Left" Margin="65,20,0,0" VerticalAlignment="Top" Height="35" Width="90" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="35" Margin="240,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="210" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+        <TextBox x:Name="servicename" HorizontalAlignment="Left" Height="35" Margin="240,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="210" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
         <Label x:Name="label4" Content="*" HorizontalAlignment="Left" Margin="455,72,0,0" VerticalAlignment="Top" Height="35" Width="20" FontWeight="Bold"/>
         <Label x:Name="label4_Copy" Content="*" HorizontalAlignment="Left" Margin="455,130,0,0" VerticalAlignment="Top" Height="35" Width="20" FontWeight="Bold"/>
 

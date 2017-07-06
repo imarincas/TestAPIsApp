@@ -13,4 +13,11 @@ namespace RESTApi
         PUT,
         DELETE
     }
+    public enum HttpVerb
+    {
+        GET,
+        POST,
+        PUT,
+        DELETE
+    }
 }

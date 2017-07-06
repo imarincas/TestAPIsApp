@@ -32,12 +32,25 @@ namespace RESTApi
             PostData = postData;
         }
 
-        public Tuple<TimeSpan, string> ProcessRequest(string parameters)
+        public Tuple<TimeSpan, string> ProcessRequest()
         {
-            var request = (HttpWebRequest)WebRequest.Create(EndPoint + parameters);
+            var request = (HttpWebRequest)WebRequest.Create(EndPoint);
             request.Method = Method.ToString();
             request.ContentLength = 0;
             request.ContentType = ContentType;
+
+            if (!string.IsNullOrEmpty(PostData) && Method == HttpVerb.POST.ToString())
+            {
+                var encoding = new UTF8Encoding();
+                var bytes = Encoding.GetEncoding("iso-8859-1").GetBytes(PostData);
+                request.ContentLength = bytes.Length;
+
+                using (var writeStream = request.GetRequestStream())
+                {
+                    writeStream.Write(bytes, 0, bytes.Length);
+                }
+            }
+
 
 
             Stopwatch sw = new Stopwatch();

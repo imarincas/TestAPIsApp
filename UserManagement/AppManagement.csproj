@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,8 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\TestsController.cs" />
-    <Compile Include="Model\User.cs" />
     <Compile Include="Controller\UserController.cs" />
+    <Compile Include="Models\Headers.cs" />
+    <Compile Include="Models\RESTRequest.cs" />
+    <Compile Include="Models\SOAPRequest.cs" />
+    <Compile Include="Models\Test.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -50,14 +57,21 @@
       <Project>{01F1D23C-1BC7-4FE6-BAE7-F13482949D89}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RESTApi\RESTClient.csproj">
+      <Project>{2089B719-788D-41A6-828F-580866026B92}</Project>
+      <Name>RESTClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SOAPApi\SOAPClient.csproj">
+      <Project>{083D88A9-B28C-49C5-8840-AD9894881F7D}</Project>
+      <Name>SOAPClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
-    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

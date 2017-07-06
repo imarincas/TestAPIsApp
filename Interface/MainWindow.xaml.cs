@@ -1,7 +1,8 @@
-﻿using DataAccess.DTO;
-using DataAccess.Repositories;
-using RESTApi;
-using SOAPApi;
+﻿using AppManagement.Controller;
+using AppManagement.Models;
+
+using System;
+using System.Text;
 using System.Windows;
 
 namespace Interface
@@ -11,71 +12,231 @@ namespace Interface
     /// </summary>
     public partial class MainWindow : Window
     {
-        UsersDTO User = new UsersDTO();
+        User User = new User();
 
-        public MainWindow(UsersDTO user)
+        public MainWindow(User user)
         {
             InitializeComponent();
             User = user;
             this.Title = "Hello " + user.Firstname + " " + user.Lastname;
+            firstname.Text = user.Firstname;
+            lastname.Text = user.Lastname;
+            email.Text = user.Email;
+            username.Text = user.Username;
+            // passwordBox.Password = user.Password;
+            assert1rest.Background = System.Windows.Media.Brushes.Red;
+            assert2rest.Background = System.Windows.Media.Brushes.Green;
+            assert3rest.Background = System.Windows.Media.Brushes.Red;
+            assert4rest.Background = System.Windows.Media.Brushes.Green;
+
+
         }
 
         private void btnSubmitSoap_Click(object sender, RoutedEventArgs e)
         {
-            var soapClient = new SoapClientController();
-            soapClient.EndPoint = txtboxUrlSoap.Text;
-            if (Utils.ValidateXml(txtboxSoapRequest.Text)== txtboxSoapRequest.Text)
+            if (!string.IsNullOrWhiteSpace(txtboxUrlSoap.Text))
             {
-                soapClient.XmlData = txtboxSoapRequest.Text;
-                var soapResponse = soapClient.Execute();
-                txtboxSoapResponse.Text = Utils.PrettyXml(soapResponse.Item2);
-                timeProcessing_Soap.Content = "Processing time: " + soapResponse.Item1;
-                var result = new TestsDTO
+                var header = new Headers
                 {
-                    Request = soapClient.XmlData,
-                    Response = Utils.PrettyXml(soapResponse.Item2),
-                    ProcessingTime = soapResponse.Item1,
-                    UserId = User.Id,
-                    Uri = soapClient.EndPoint
+                    Name = headername1.ToString(),
+                    Value = headervalue1.ToString()
                 };
+                var test = TestsController.GetSOAPResponse(txtboxUrlSoap.Text, txtboxSoapRequest.Text, User, header);
+                txtboxSoapResponse.Text = test.Response;
+                timeProcessing_Soap.Text = test.ProcessingTime.ToString();
 
-                var resultsRepo = new ResultsRepository();
-                resultsRepo.InsertResultInDB(result);
-            }else
-            {
-                txtboxSoapResponse.Text = Utils.ValidateXml(txtboxSoapRequest.Text);
-            }
-            
+                if (!string.IsNullOrWhiteSpace(key1soap.Text) && (!string.IsNullOrWhiteSpace(value1soap.Text)))
+                {
+                    var validare = TestsController.ValidateResponse(key1soap.Text, value1soap.Text, test.Response);
+                    if (validare == 1)
+                    {
+                        assert1.Background = System.Windows.Media.Brushes.Green;
+                    }
+                    else if (validare == 0)
+                    {
+                        assert1.Background = System.Windows.Media.Brushes.Red;
+                    }
+                    else
+                    {
+                        assert1.Background = System.Windows.Media.Brushes.Yellow;
+                    }
+                };
+                if (!string.IsNullOrWhiteSpace(key2soap.Text) && (!string.IsNullOrWhiteSpace(value2soap.Text)))
+                {
+                    var validare = TestsController.ValidateResponse(key2soap.Text, value2soap.Text, test.Response);
+                    if (validare == 1)
+                    {
+                        assert2.Background = System.Windows.Media.Brushes.Green;
+                    }
+                    else if (validare == 0)
+                    {
+                        assert2.Background = System.Windows.Media.Brushes.Red;
+                    }
+                    else
+                    {
+                        assert2.Background = System.Windows.Media.Brushes.Yellow;
+                    }
+                }
+            };
         }
-        
+
 
         private void btnSubmitRest_Click(object sender, RoutedEventArgs e)
         {
-            var restClient = new RestClientController();
-            restClient.EndPoint = txtboxUrlRest.Text;
-            restClient.Method = dropdownMethod.Text;
-            restClient.PostData = txtboxRestRequest.Text;
-            restClient.ContentType = contentTypeList.Text;
-            var response = restClient.ProcessRequest(txtboxParams.Text);
-            txtboxRestResponse.Text = JsonFormater.FormatJson(response.Item2);
-            timeProcessing_Rest.Content = "Processing time: " + response.Item1;
-
-            var result = new TestsDTO {
-                Request = restClient.PostData,
-                Response = response.Item2,
-                ProcessingTime = response.Item1,
-                UserId = User.Id,
-                Uri=restClient.EndPoint
+            var request = new RESTRequest
+            {
+                EndPoint = txtboxUrlRest.Text + txtboxParams,
+                Method = dropdownMethod.Text,
+                PostData = txtboxRestRequest.Text,
+                ContentType = contentTypeList.Text,
             };
 
-            var resultsRepo = new ResultsRepository();
-            resultsRepo.InsertResultInDB(result);
+            var test = TestsController.GetRESTResponse(request, User);
+            txtboxRestResponse.Text = test.Response;
+            timeProcessing_Rest.Text = test.ProcessingTime.ToString();
+
+            if (!string.IsNullOrWhiteSpace(key1rest.Text) && (!string.IsNullOrWhiteSpace(value1rest.Text)))
+            {
+                var validare = TestsController.ValidateResponseREST(key1rest.Text, value1rest.Text, test.Response);
+                if (validare == 1)
+                {
+                    assert1rest.Background = System.Windows.Media.Brushes.Green;
+                }
+                else if (validare == 0)
+                {
+                    assert1rest.Background = System.Windows.Media.Brushes.Red;
+                }
+                else
+                {
+                    assert1rest.Background = System.Windows.Media.Brushes.Yellow;
+                }
+            };
+            if (!string.IsNullOrWhiteSpace(key2rest.Text) && (!string.IsNullOrWhiteSpace(value2rest.Text)))
+            {
+                var validare = TestsController.ValidateResponseREST(key2rest.Text, value2rest.Text, test.Response);
+                if (validare == 1)
+                {
+                    assert2rest.Background = System.Windows.Media.Brushes.Green;
+                }
+                else if (validare == 0)
+                {
+                    assert2rest.Background = System.Windows.Media.Brushes.Red;
+                }
+                else
+                {
+                    assert2rest.Background = System.Windows.Media.Brushes.Yellow;
+                }
+            }
 
         }
 
-        private void tabControl_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void saveDbSoap_Click(object sender, RoutedEventArgs e)
+        {
+            var testcase = new Test
+            {
+                Request=txtboxSoapRequest.Text,
+                Response=txtboxSoapResponse.Text,
+                ProcessingTime=TimeSpan.Parse(timeProcessing_Soap.Text),
+                Uri=txtboxUrlSoap.Text,
+                UserId=User.Id,
+                ServiceName=User.ServiceName
+            };
+            
+
+            if (TestsController.InsertInDB(testcase))
+            {
+                MessageBox.Show("TestCase saved.");
+            }
+            else
+            {
+                MessageBox.Show("Error.");
+            }
+
+        }
+
+        private void saveDbRest_Click(object sender, RoutedEventArgs e)
+        {
+            var testcase = new Test
+            {
+                Request = txtboxRestRequest.Text,
+                Response = txtboxRestResponse.Text,
+                ProcessingTime = TimeSpan.Parse(timeProcessing_Rest.Text),
+                Uri = txtboxUrlRest.Text,
+                UserId = User.Id,
+                ServiceName = User.ServiceName,
+                Method=dropdownMethod.Text,
+                Params=txtboxParams.Text,
+                ContentType=contentTypeList.Text
+                
+            };
+            if (TestsController.InsertInDB(testcase))
+            {
+                MessageBox.Show("TestCase saved.");
+            }
+            else
+            {
+                MessageBox.Show("Error.");
+            }
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            var user = new User
+            {
+                Username=username.Text,
+                Firstname=firstname.Text,
+                Lastname=lastname.Text,
+                Email=email.Text,
+                Id=User.Id
+            };
+            if (!string.IsNullOrEmpty(passwordBox.Password))
+
+            {
+                byte[] data = Encoding.ASCII.GetBytes(passwordBox.Password);
+                data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+                string hashedPassword = Encoding.ASCII.GetString(data);
+                user.Password = passwordBox.Password;
+            }
+            else
+            {
+                user.Password = User.Password;
+            }
+                
+            if (!string.IsNullOrEmpty(username.Text))
+            {
+                if (!UserController.CheckUser(user))
+                {
+                    if (UserController.UpdateUser(user))
+                    {
+                        MessageBox.Show("Update succesfully.");
+                        User = user;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while updateing user.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Username already exists.");
+                }
+            }
+
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            User = null;
+            
+            this.Hide();
+            LoginWindow lg = new LoginWindow();
+            lg.Show();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
         {
 
+           // servicenameList.Items.Add()
         }
     }
 }

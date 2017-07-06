@@ -1,19 +1,6 @@
-﻿using DataAccess.DTO;
-using DataAccess.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AppManagement.Controller;
+using AppManagement.Models;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using UserManagement;
 
 namespace Interface
 {
@@ -31,9 +18,14 @@ namespace Interface
         {
             if (!string.IsNullOrEmpty(txt_Username.Text) && !string.IsNullOrEmpty(txt_Password.Password))
             {
-               var user = UserController.LoginUser(txt_Username.Text, txt_Password.Password);
-                if (!user.Equals(null))
+               var user = new User();
+               user = UserController.LoginUser(txt_Username.Text, txt_Password.Password);
+                if (user!=null)
                 {
+                    if (!string.IsNullOrEmpty(servicename.Text))
+                    {
+                        user.ServiceName = servicename.Text;
+                    }
                     // MessageBox.Show("Login succesfully");
                     this.Hide();
                     MainWindow main = new MainWindow(user);

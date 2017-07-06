@@ -9,6 +9,6 @@ namespace DataAccess.Interfaces
 {
    public interface IUsersRepository
     {
-         UsersDTO GetUser(string username);
+         UserDTO GetUser(string username);
     }
 }

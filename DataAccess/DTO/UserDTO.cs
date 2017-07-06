@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.DTO
 {
-   public class UsersDTO
+   public class UserDTO
     {
         public int Id { get; set; }
         public string Username { get; set; }

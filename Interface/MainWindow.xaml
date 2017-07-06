@@ -7,27 +7,98 @@
         mc:Ignorable="d"
         Title="Test Your API" Height="768" Width="1024">
     <Grid>
-        <TabControl x:Name="tabControl" Margin="0,0,-0.4,0.4" SelectionChanged="tabControl_SelectionChanged" BorderThickness="4">
+        <TabControl x:Name="tabControl" Margin="0,0,-0.4,0.4"  BorderThickness="4">
             <TabItem Header="SOAP">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
-                    <Label x:Name="txtSoapUrl"  Content="URL: " HorizontalAlignment="Stretch" Margin="10,10,959.6,665.44" VerticalAlignment="Stretch" Height="Auto" FontWeight="Bold" RenderTransformOrigin="0.526,0.671" TextOptions.TextFormattingMode="Display"  />
+                    <Label x:Name="txtSoapUrl"  Content="URL: " HorizontalAlignment="Stretch" Margin="10,12,953.6,658.2" VerticalAlignment="Stretch" Height="Auto" FontWeight="Bold" RenderTransformOrigin="0.526,0.671" TextOptions.TextFormattingMode="Display"  />
                     <TextBox x:Name="txtboxUrlSoap"  HorizontalAlignment="Stretch" Margin="57,10,10.2,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="Auto" Height="30"/>
                     <TextBox x:Name="txtboxSoapRequest"  ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Height="350" Width="432" AcceptsReturn="True" />
                     <TextBox x:Name="txtboxSoapResponse" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Height="Auto" Margin="0,75.96,10.2,279.88" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="471.8"/>
                     <Label x:Name="label" Content="Request" HorizontalAlignment="Left" Margin="25.2,45,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label x:Name="label1" Content="Response" HorizontalAlignment="Right" Margin="0,45,392.746,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Button x:Name="btnSubmitSoap" Content="Submit" HorizontalAlignment="Left" Margin="345,447,0,0" VerticalAlignment="Top" Width="97" FontWeight="Bold" Click="btnSubmitSoap_Click" Height="30"/>
-                    <TabControl Height="223.88" VerticalAlignment="Bottom" Margin="10,0,10.2,10">
+                    <TabControl Height="223.88" VerticalAlignment="Bottom" Margin="10,0,10.2,10" Background="#FFF6F4F4">
 
                         <TabItem Header="Headers">
-
+                            <Grid>
+                                <Label Content="Name" Margin="10,0,658,164" FontWeight="Bold"/>
+                                <Border BorderBrush="Black" BorderThickness="1" Margin="-2,34,-1,153" RenderTransformOrigin="0.5,0.5" OpacityMask="#FF262222" Background="#FF9A9191">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+                                <Label Content="Value" Margin="516,0,152,164" FontWeight="Bold"/>
+                                <Border BorderBrush="Black" BorderThickness="1" Margin="488,-2,484,-1" RenderTransformOrigin="0.5,0.5" OpacityMask="#FF262222" Background="#FF9A9191">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+                                <TextBox x:Name="headername1" TextWrapping="Wrap" Text="" Margin="0,46,512,124"/>
+                                <TextBox TextWrapping="Wrap" Text="" Margin="0,77,512,93"/>
+                                <TextBox TextWrapping="Wrap" Text="" Margin="0,108,512,62"/>
+                                <TextBox TextWrapping="Wrap" Text="" Margin="0,139,512,31"/>
+                                <TextBox TextWrapping="Wrap" Text="" Height="26" Margin="503,77,10,93"/>
+                                <TextBox x:Name="headername1_Copy" TextWrapping="Wrap" Text="" Height="26" Margin="503,108,10,62"/>
+                                <TextBox x:Name="headervalue1" TextWrapping="Wrap" Text="" Height="26" Margin="503,46,10,124"/>
+                                <TextBox x:Name="headername1_Copy2" TextWrapping="Wrap" Text="" Height="26" Width="468" Margin="502,139,10,31"/>
+                            </Grid>
                         </TabItem>
                         <TabItem Header="Assertions">
-
+                            <Grid>
+                                <Label Content="Xpath" Margin="10,0,658,164" FontWeight="Bold"/>
+                                <Border BorderBrush="Black" BorderThickness="1" Margin="-2,34,-1,153" RenderTransformOrigin="0.5,0.5" OpacityMask="#FF262222" Background="#FF9A9191">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+                                <Label Content="Expected Value" Margin="516,0,152,164" FontWeight="Bold"/>
+                                <Border BorderBrush="Black" BorderThickness="1" Margin="488,-2,484,-1" RenderTransformOrigin="0.5,0.5" OpacityMask="#FF262222" Background="#FF9A9191">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+                                <TextBox x:Name="key1soap" TextWrapping="Wrap" Text="" Margin="0,46,512,124"/>
+                                <TextBox x:Name="key2soap" TextWrapping="Wrap" Text="" Margin="0,77,512,93"/>
+                                <TextBox TextWrapping="Wrap" Text="" Margin="0,108,512,62"/>
+                                <TextBox TextWrapping="Wrap" Text="" Margin="0,139,512,31"/>
+                                <TextBox x:Name="value2soap" TextWrapping="Wrap" Text="" Height="26" Margin="503,77,60,93"/>
+                                <TextBox TextWrapping="Wrap" Text="" Height="26" Margin="503,108,60,62"/>
+                                <TextBox x:Name="value1soap" TextWrapping="Wrap" Text="" Height="26" Margin="503,46,60,124"/>
+                                <TextBox TextWrapping="Wrap" Text="" Height="26" Margin="502,139,60,31"/>
+                                <Label x:Name="assert1" Content="" HorizontalAlignment="Left" Margin="935,46,0,0" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.137,0.594" Height="16"/>
+                                <Label x:Name="assert2" Content="" HorizontalAlignment="Left" Margin="935,77,0,0" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.137,0.594" Height="16"/>
+                                <Label x:Name="assert3" Content="" HorizontalAlignment="Left" Margin="935,108,0,0" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.137,0.594" Height="15"/>
+                                <Label x:Name="assert4" Content="" HorizontalAlignment="Left" Margin="935,139,0,0" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.137,0.594" Height="16"/>
+                            </Grid>
                         </TabItem>
+
+
+
+
                     </TabControl>
-                    <Label x:Name="timeProcessing_Soap" Content="Processing Time: " HorizontalAlignment="Left" Height="29" Margin="747,448,0,0" VerticalAlignment="Top" Width="210" FontWeight="Bold"/>
-                    <Button x:Name="saveDbSoap" Content="Save to DB" HorizontalAlignment="Left" Margin="557,447,0,0" VerticalAlignment="Top" Width="100" Height="29" FontWeight="Bold"/>
+                    <Label  Content="Processing Time: " HorizontalAlignment="Left" Height="29" Margin="747,448,0,0" VerticalAlignment="Top" Width="108" FontWeight="Bold"/>
+                    <Button x:Name="saveDbSoap" Content="Save to DB" HorizontalAlignment="Left" Margin="557,447,0,0" VerticalAlignment="Top" Width="100" Height="29" FontWeight="Bold" Click="saveDbSoap_Click"/>
+                    <TextBox x:Name="timeProcessing_Soap" HorizontalAlignment="Left" Height="30" Margin="855,447,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
                 </Grid>
             </TabItem>
             <TabItem Header="REST" Margin="0,0,0,0">
@@ -35,8 +106,8 @@
 
 
 
-                    <Label x:Name="txtRestpUrl"  Content="URL:" HorizontalAlignment="Stretch" Margin="92.296,10.31,856.504,670.29" VerticalAlignment="Stretch" Height="Auto" FontWeight="Bold" RenderTransformOrigin="0.526,0.671" TextOptions.TextFormattingMode="Display"  />
-                    <TextBox x:Name="txtboxUrlRest" Margin="133.254,10.16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="29.84" HorizontalAlignment="Left" Width="349.146"/>
+                    <Label x:Name="txtRestpUrl"  Content="URL:" HorizontalAlignment="Stretch" Margin="101,11,849.6,662.2" VerticalAlignment="Stretch" Height="Auto" FontWeight="Bold" RenderTransformOrigin="0.526,0.671" TextOptions.TextFormattingMode="Display"  />
+                    <TextBox x:Name="txtboxUrlRest" Margin="147,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" HorizontalAlignment="Left" Width="350"/>
                     <Label x:Name="paramsName" Content="Params:" FontWeight="Bold" Height="29.84" VerticalAlignment="Top" Margin="0,10,418.666,0" HorizontalAlignment="Right" Width="63.334"/>
                     <TextBox x:Name="txtboxParams" HorizontalAlignment="Right" Height="29.84" VerticalAlignment="Top" Width="204.533" Margin="0,10,222.666,0"/>
                     <TextBox x:Name="txtboxRestRequest"  HorizontalAlignment="Left" Margin="10,75.96,0,0" VerticalAlignment="Top" Height="354.6" Width="472.4" AcceptsReturn="True" AutoWordSelection="True" />
@@ -44,13 +115,79 @@
                     <Label x:Name="restRequestname" Content="Request" HorizontalAlignment="Left" Margin="25.2,45,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label x:Name="restResponsename" Content="Response" HorizontalAlignment="Right" Margin="0,45,392.746,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Button x:Name="btnSubmitRest" Content="Submit" HorizontalAlignment="Left" Margin="386,446,0,0" VerticalAlignment="Top" Width="96" FontWeight="Bold" Click="btnSubmitRest_Click" Height="30"/>
-                    <TabControl Height="223.88" VerticalAlignment="Bottom" Margin="10,0,10.2,10">
+                    <TabControl Height="223.88" VerticalAlignment="Bottom" Margin="10,0,10.2,10" Background="#FFEAE8E8">
 
                         <TabItem Header="Headers">
-
+                            <Grid>
+                                <Label Content="Name" Margin="10,0,658,164" FontWeight="Bold"/>
+                                <Border BorderBrush="Black" BorderThickness="1" Margin="-2,34,-1,153" RenderTransformOrigin="0.5,0.5" OpacityMask="#FF262222" Background="#FF9A9191">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+                                <Label Content="Value" Margin="516,0,152,164" FontWeight="Bold"/>
+                                <Border BorderBrush="Black" BorderThickness="1" Margin="488,-2,484,-1" RenderTransformOrigin="0.5,0.5" OpacityMask="#FF262222" Background="#FF9A9191">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+                                <TextBox x:Name="headername1REST" TextWrapping="Wrap" Text="" Margin="0,46,512,124"/>
+                                <TextBox TextWrapping="Wrap" Text="" Margin="0,77,512,93"/>
+                                <TextBox TextWrapping="Wrap" Text="" Margin="0,108,512,62"/>
+                                <TextBox TextWrapping="Wrap" Text="" Margin="0,139,512,31"/>
+                                <TextBox TextWrapping="Wrap" Text="" Height="26" Width="468" Margin="503,77,9,93"/>
+                                <TextBox x:Name="headername1_Copy123" TextWrapping="Wrap" Text="" Height="26" Width="468" Margin="503,108,9,62"/>
+                                <TextBox x:Name="headervalue1REST" TextWrapping="Wrap" Text="" Height="26" Margin="503,46,10,124"/>
+                                <TextBox x:Name="headername1_Copy21" TextWrapping="Wrap" Text="" Height="26" Width="468" Margin="502,139,10,31"/>
+                            </Grid>
                         </TabItem>
                         <TabItem Header="Assertions">
-
+                            <Grid>
+                                <Label Content="JsonPath" Margin="10,0,658,164" FontWeight="Bold"/>
+                                <Border BorderBrush="Black" BorderThickness="1" Margin="-2,34,-1,153" RenderTransformOrigin="0.5,0.5" OpacityMask="#FF262222" Background="#FF9A9191">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+                                <Label Content="Expected Value" Margin="516,0,152,164" FontWeight="Bold"/>
+                                <Border BorderBrush="Black" BorderThickness="1" Margin="488,-2,484,-1" RenderTransformOrigin="0.5,0.5" OpacityMask="#FF262222" Background="#FF9A9191">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="-1"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+                                <TextBox x:Name="key1rest" TextWrapping="Wrap" Text="" Margin="0,46,512,124"/>
+                                <TextBox x:Name="key2rest" TextWrapping="Wrap" Text="" Margin="0,77,512,93"/>
+                                <TextBox TextWrapping="Wrap" Text="" Margin="0,108,512,62"/>
+                                <TextBox TextWrapping="Wrap" Text="" Margin="0,139,512,31"/>
+                                <TextBox x:Name="value2rest" TextWrapping="Wrap" Text="" Height="26" Margin="503,77,51,93"/>
+                                <TextBox TextWrapping="Wrap" Text="" Height="26" Margin="503,108,51,62"/>
+                                <TextBox x:Name="value1rest" TextWrapping="Wrap" Text="" Height="26" Margin="503,46,51,124"/>
+                                <TextBox TextWrapping="Wrap" Text="" Height="26" Margin="502,139,51,31"/>
+                                <Label x:Name="assert1rest" Content="" HorizontalAlignment="Left" Margin="935,46,0,0" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.137,0.594" Height="16"/>
+                                <Label x:Name="assert2rest" Content="" HorizontalAlignment="Left" Margin="935,77,0,0" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.137,0.594" Height="16"/>
+                                <Label x:Name="assert3rest" Content="" HorizontalAlignment="Left" Margin="935,108,0,0" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.137,0.594" Height="15"/>
+                                <Label x:Name="assert4rest" Content="" HorizontalAlignment="Left" Margin="935,139,0,0" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.137,0.594" Height="16"/>
+                            </Grid>
                         </TabItem>
 
 
@@ -70,34 +207,35 @@
                         <ComboBoxItem Content="text/xml"/>
                         <ComboBoxItem Content="multipart/form-data"/>
                     </ComboBox>
-                    <Label x:Name="timeProcessing_Rest" Content="Processing Time: " HorizontalAlignment="Left" Height="30" Margin="752,444,0,0" VerticalAlignment="Top" Width="210" FontWeight="Bold"/>
-                    <Button x:Name="saveDbRest" Content="Save to DB" HorizontalAlignment="Left" Margin="597,445,0,0" VerticalAlignment="Top" Width="100" Height="29" FontWeight="Bold"/>
+                    <Label  Content="Processing Time: " HorizontalAlignment="Left" Height="30" Margin="751,445,0,0" VerticalAlignment="Top" Width="105" FontWeight="Bold"/>
+                    <Button x:Name="saveDbRest" Content="Save to DB" HorizontalAlignment="Left" Margin="597,445,0,0" VerticalAlignment="Top" Width="100" Height="29" FontWeight="Bold" Click="saveDbRest_Click"/>
+                    <TextBox x:Name="timeProcessing_Rest" HorizontalAlignment="Left" Height="29" Margin="856,445,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 </Grid>
 
             </TabItem>
             <TabItem Header="TEST Execution" Margin="-2.2,-2,2.4,0">
                 <Grid Height="703" Width="1003" Margin="0,0,9,0">
                     <Label x:Name="label3" Content="Select service name:" Margin="112,51,761,612" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Button x:Name="button" Content="Executa testele pentru serviciul selectat" Margin="112,146,551,492" FontWeight="Bold"/>
-                    <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Height="40" Margin="272,51,0,0" VerticalAlignment="Top" Width="180" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                    <Button x:Name="button" Content="Executa testele pentru serviciul selectat" Margin="112,146,551,492" FontWeight="Bold" Click="button_Click"/>
+                    <ComboBox x:Name="servicenameList" HorizontalAlignment="Left" Height="40" Margin="272,51,0,0" VerticalAlignment="Top" Width="180" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
                 </Grid>
             </TabItem>
             <TabItem Header="User profile" Margin="-2.2,-2,2.4,0">
                 <Grid Margin="40,35,-40,-35.4">
-                    <Label x:Name="label2" Content="First name:" Margin="62,34,845,645.6" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                    <Label x:Name="label9" Content="Last name:" Margin="62,99,845,580.6" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                    <Label x:Name="label4" Content="Email:" HorizontalAlignment="Left" Margin="47,164,0,0" VerticalAlignment="Top" Width="105" Height="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
-                    <Label x:Name="label5" Content="Username:" HorizontalAlignment="Left" Margin="62,226,0,0" VerticalAlignment="Top" Width="105" Height="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
-                    <Label x:Name="label6" Content="Password: " Margin="62,284,845,390.6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
-                    <Button x:Name="button1" Content="Update Details" HorizontalAlignment="Left" Margin="112,384,0,0" VerticalAlignment="Top" Width="165" Height="45" FontWeight="Bold" BorderThickness="4"/>
+                    <Label x:Name="label2" Content="First name:" Margin="62,34,838.6,629.6" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Label x:Name="label9" Content="Last name:" Margin="62,99,824.6,564.6" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Label x:Name="label4" Content="Email:" HorizontalAlignment="Left" Margin="47,164,0,0" VerticalAlignment="Top" Width="120" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                    <Label x:Name="label5" Content="Username:" HorizontalAlignment="Left" Margin="62,226,0,0" VerticalAlignment="Top" Width="105" Height="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                    <Label x:Name="label6" Content="Password: " Margin="62,284,838.6,379.6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                    <Button x:Name="button1" Content="Update Details" HorizontalAlignment="Left" Margin="112,384,0,0" VerticalAlignment="Top" Width="165" Height="45" FontWeight="Bold" BorderThickness="4" Click="button1_Click"/>
                     <TextBox x:Name="firstname" HorizontalAlignment="Left" Height="40" Margin="297,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
                     <TextBox x:Name="lastname" HorizontalAlignment="Left" Height="40" Margin="297,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
                     <TextBox x:Name="email" HorizontalAlignment="Left" Height="40" Margin="297,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
                     <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="297,284,0,0" VerticalAlignment="Top" Height="40" Width="135" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                     <Label x:Name="label7" Content="Service name:" HorizontalAlignment="Left" Margin="552,50,0,0" VerticalAlignment="Top" Height="40" Width="130" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
-                    <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="727,50,0,0" VerticalAlignment="Top" Width="250" Height="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
-                    <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="40" Margin="297,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
-                    <Button x:Name="button2" Content="Logout" Margin="477,384,330,281" FontWeight="Bold" BorderThickness="4"/>
+                    <TextBox x:Name="username" HorizontalAlignment="Left" Height="40" Margin="297,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                    <Button x:Name="button2" Content="Logout" Margin="477,380,323.6,270.6" FontWeight="Bold" BorderThickness="4" Click="button2_Click"/>
+                    <TextBox HorizontalAlignment="Left" Height="39" Margin="687,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="262" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
                 </Grid>
             </TabItem>
 
