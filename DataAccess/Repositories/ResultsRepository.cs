@@ -13,13 +13,14 @@ namespace DataAccess.Repositories
         {
             using (var con = new SqlConnection(Config.ConnectionStings.AppDatabase))
             {
-                var cmd = new SqlCommand("INSERT INTO TResults VALUES ( @request, @response, @userId, @procTime, @uri, @servicename);", con);
+                var cmd = new SqlCommand("INSERT INTO TESTCASES VALUES ( @request, @response, @userId, @procTime, @uri,@header, @servicename);", con);
 
                 cmd.Parameters.Add(new SqlParameter("procTime", testcase.ProcessingTime));
                 cmd.Parameters.Add(new SqlParameter("request", testcase.Request));
                 cmd.Parameters.Add(new SqlParameter("response", testcase.Response));
                 cmd.Parameters.Add(new SqlParameter("userId", testcase.UserId));
                 cmd.Parameters.Add(new SqlParameter("uri", testcase.Uri));
+                cmd.Parameters.Add(new SqlParameter("header", testcase.ServiceName));
                 cmd.Parameters.Add(new SqlParameter("servicename", testcase.ServiceName));
 
                 con.Open();
@@ -35,7 +36,7 @@ namespace DataAccess.Repositories
             var resultsList = new List<TestsDTO>();
             using (var con = new SqlConnection(Config.ConnectionStings.AppDatabase))
             {
-                var cmd = new SqlCommand("SELECT * FROM Results where Userid=@userId", con);
+                var cmd = new SqlCommand("SELECT * FROM TESTCASES where Userid=@userId", con);
                 cmd.Parameters.Add(new SqlParameter("userId", user.Id));
 
                 con.Open();
@@ -50,7 +51,8 @@ namespace DataAccess.Repositories
                         Request = dataReader["request"].ToString(),
                         Response = dataReader["request"].ToString(),
                         UserId=int.Parse(dataReader["userId"].ToString()),
-                        Uri=dataReader["Uri"].ToString()
+                        Uri=dataReader["Uri"].ToString(),
+                        ServiceName=dataReader["ServiceName"].ToString()
                     };
                     resultsList.Add(resultEntry);
                 }
@@ -63,7 +65,7 @@ namespace DataAccess.Repositories
             var serviceList = new List<string>();
             using (var con = new SqlConnection(Config.ConnectionStings.AppDatabase))
             {
-                var cmd = new SqlCommand("SELECT ServiceName FROM TESTCASES", con);
+                var cmd = new SqlCommand("SELECT DISTINCT ServiceName FROM TESTCASES", con);
                 con.Open();
                 var dataReader = cmd.ExecuteReader();
 

@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using RESTApi;
 using SOAPApi;
 using System;
+using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
@@ -31,7 +32,8 @@ namespace AppManagement.Controller
                 Response = soapResult,
                 ProcessingTime = soapResponse.Item1,
                 UserId = user.Id,
-                Uri = request.EndPoint
+                Uri = request.EndPoint,
+                ServiceName = user.ServiceName
             };
 
             return result;
@@ -54,7 +56,8 @@ namespace AppManagement.Controller
                 Response = resultJson,
                 ProcessingTime = response.Item1,
                 UserId = user.Id,
-                Uri = request.EndPoint
+                Uri = request.EndPoint,
+                ServiceName=user.ServiceName
             };
            
             return testcase;
@@ -118,6 +121,14 @@ namespace AppManagement.Controller
 
             }
 
+        }
+
+        public static List<string> GetServiceName()
+        {
+            var testRepo = new ResultsRepository();
+            var serviceList = testRepo.GetServicename();
+
+            return serviceList;
         }
     }
 }

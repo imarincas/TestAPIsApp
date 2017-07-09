@@ -218,6 +218,12 @@
                     <Label x:Name="label3" Content="Select service name:" Margin="112,51,761,612" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                     <Button x:Name="button" Content="Executa testele pentru serviciul selectat" Margin="112,146,551,492" FontWeight="Bold" Click="button_Click"/>
                     <ComboBox x:Name="servicenameList" HorizontalAlignment="Left" Height="40" Margin="272,51,0,0" VerticalAlignment="Top" Width="180" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                    <Label Content="Teste executate:" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="112,294,736,369" FontWeight="Bold"/>
+                    <Label Content="Teste passed:" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="112,339,736,324" FontWeight="Bold"/>
+                    <Label Content="Teste failed:" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="112,384,736,279" FontWeight="Bold"/>
+                    <Label x:Name="testeExecutate" Content="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="314,294,534,369" FontWeight="Bold"/>
+                    <Label x:Name="testePassed" Content="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="314,339,534,324" FontWeight="Bold"/>
+                    <Label x:Name="testeFailed" Content="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="314,384,534,279" FontWeight="Bold"/>
                 </Grid>
             </TabItem>
             <TabItem Header="User profile" Margin="-2.2,-2,2.4,0">
@@ -236,14 +242,9 @@
                     <TextBox x:Name="username" HorizontalAlignment="Left" Height="40" Margin="297,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
                     <Button x:Name="button2" Content="Logout" Margin="477,380,323.6,270.6" FontWeight="Bold" BorderThickness="4" Click="button2_Click"/>
                     <TextBox HorizontalAlignment="Left" Height="39" Margin="687,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="262" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+
                 </Grid>
             </TabItem>
-
-
-
-
-
-
 
         </TabControl>
     </Grid>

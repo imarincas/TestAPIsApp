@@ -4,9 +4,13 @@ using AppManagement.Models;
 using System;
 using System.Text;
 using System.Windows;
+using System.Web.UI.WebControls;
+
+
 
 namespace Interface
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -28,6 +32,21 @@ namespace Interface
             assert2rest.Background = System.Windows.Media.Brushes.Green;
             assert3rest.Background = System.Windows.Media.Brushes.Red;
             assert4rest.Background = System.Windows.Media.Brushes.Green;
+
+            var nameList = TestsController.GetServiceName();
+            var listSize = nameList.Count;
+            var newItem = new ListItem();
+            foreach (var item in nameList)
+            {
+                if (!string.IsNullOrWhiteSpace(item))
+                {
+                newItem = new ListItem();
+                newItem.Text = item;
+                newItem.Value = item;
+                    servicenameList.Items.Add(newItem);
+                }
+            }
+
 
 
         }
