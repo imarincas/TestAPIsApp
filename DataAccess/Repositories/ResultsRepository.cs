@@ -49,10 +49,10 @@ namespace DataAccess.Repositories
                         Id = int.Parse(dataReader["id"].ToString()),
                         ProcessingTime = TimeSpan.Parse(dataReader["ProcessingTime"].ToString()),
                         Request = dataReader["request"].ToString(),
-                        Response = dataReader["request"].ToString(),
-                        UserId=int.Parse(dataReader["userId"].ToString()),
-                        Uri=dataReader["Uri"].ToString(),
-                        ServiceName=dataReader["ServiceName"].ToString()
+                        Response = dataReader["response"].ToString(),
+                        UserId = int.Parse(dataReader["userId"].ToString()),
+                        Uri = dataReader["Uri"].ToString(),
+                        ServiceName = dataReader["ServiceName"].ToString()
                     };
                     resultsList.Add(resultEntry);
                 }
@@ -73,7 +73,37 @@ namespace DataAccess.Repositories
                 {
                     serviceList.Add(dataReader["ServiceName"].ToString());
                 }
-                return serviceList; 
+                return serviceList;
+            }
+        }
+
+        public List<TestsDTO> GetTestsByServiceName(string serviceName)
+        {
+            var resultsList = new List<TestsDTO>();
+            using (var con = new SqlConnection(Config.ConnectionStings.AppDatabase))
+            {
+                var cmd = new SqlCommand("SELECT * FROM TESTCASES where ServiceName=@serviceName", con);
+                cmd.Parameters.Add(new SqlParameter("serviceName", serviceName));
+
+                con.Open();
+                var dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    var resultEntry = new TestsDTO()
+                    {
+                        Id = int.Parse(dataReader["id"].ToString()),
+                        ProcessingTime = TimeSpan.Parse(dataReader["ProcessingTime"].ToString()),
+                        Request = dataReader["request"].ToString(),
+                        Response = dataReader["response"].ToString(),
+                        UserId = int.Parse(dataReader["userId"].ToString()),
+                        Uri = dataReader["Uri"].ToString(),
+                        ServiceName = dataReader["ServiceName"].ToString()
+                    };
+                    resultsList.Add(resultEntry);
+                }
+                return resultsList;
+
             }
         }
     }

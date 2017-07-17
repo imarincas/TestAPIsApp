@@ -217,13 +217,13 @@
                 <Grid Height="703" Width="1003" Margin="0,0,9,0">
                     <Label x:Name="label3" Content="Select service name:" Margin="112,51,761,612" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                     <Button x:Name="button" Content="Executa testele pentru serviciul selectat" Margin="112,146,551,492" FontWeight="Bold" Click="button_Click"/>
-                    <ComboBox x:Name="servicenameList" HorizontalAlignment="Left" Height="40" Margin="272,51,0,0" VerticalAlignment="Top" Width="180" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                    <ComboBox x:Name="servicenameList" HorizontalAlignment="Left" Height="40" Margin="272,51,0,0" VerticalAlignment="Top" Width="180" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" SelectionChanged="servicenameList_SelectionChanged" ContextMenuOpening="servicenameList_ContextMenuOpening"/>
                     <Label Content="Teste executate:" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="112,294,736,369" FontWeight="Bold"/>
                     <Label Content="Teste passed:" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="112,339,736,324" FontWeight="Bold"/>
                     <Label Content="Teste failed:" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="112,384,736,279" FontWeight="Bold"/>
-                    <Label x:Name="testeExecutate" Content="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="314,294,534,369" FontWeight="Bold"/>
-                    <Label x:Name="testePassed" Content="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="314,339,534,324" FontWeight="Bold"/>
-                    <Label x:Name="testeFailed" Content="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="314,384,534,279" FontWeight="Bold"/>
+                    <Label x:Name="testeExecutate" Content="" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="314,294,534,369" FontWeight="Bold"/>
+                    <Label x:Name="testePassed" Content="" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="314,339,534,324" FontWeight="Bold"/>
+                    <Label x:Name="testeFailed" Content="" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="314,384,534,279" FontWeight="Bold"/>
                 </Grid>
             </TabItem>
             <TabItem Header="User profile" Margin="-2.2,-2,2.4,0">

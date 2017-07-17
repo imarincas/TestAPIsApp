@@ -1,12 +1,9 @@
 ﻿
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 using System.Xml;
 
 namespace SOAPApi
@@ -44,7 +41,8 @@ namespace SOAPApi
                     }
                 }
                 sw.Stop();
-                return new Tuple<TimeSpan?, string>(sw.Elapsed, soapResult);
+                var xml = HttpUtility.HtmlDecode(soapResult);
+                return new Tuple<TimeSpan?, string>(sw.Elapsed, xml);
             }
             catch (Exception e)
             {

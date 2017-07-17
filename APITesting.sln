@@ -13,6 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppManagement", "UserManagement\AppManagement.csproj", "{5B159869-D8D7-44AD-8DA4-706A703C1ED3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database scripts", "Database scripts", "{F8EF0D98-7678-47B8-B4BB-C702434BDB28}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Desktop\CreateDatabase.sql = ..\..\..\..\Desktop\CreateDatabase.sql
+		..\..\..\..\Desktop\CreateTableTESTCASES.sql = ..\..\..\..\Desktop\CreateTableTESTCASES.sql
+		..\..\..\..\Desktop\CreateTableUsers.sql = ..\..\..\..\Desktop\CreateTableUsers.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
 namespace RESTApi
 {
@@ -74,7 +72,8 @@ namespace RESTApi
                         }
                 }
                 sw.Stop();
-                return new Tuple<TimeSpan, string>(sw.Elapsed, responseValue);
+                var result = HttpUtility.HtmlDecode(responseValue);
+                return new Tuple<TimeSpan, string>(sw.Elapsed, result);
             }
         }
     }

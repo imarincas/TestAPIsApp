@@ -27,12 +27,6 @@ namespace Interface
             lastname.Text = user.Lastname;
             email.Text = user.Email;
             username.Text = user.Username;
-            // passwordBox.Password = user.Password;
-            assert1rest.Background = System.Windows.Media.Brushes.Red;
-            assert2rest.Background = System.Windows.Media.Brushes.Green;
-            assert3rest.Background = System.Windows.Media.Brushes.Red;
-            assert4rest.Background = System.Windows.Media.Brushes.Green;
-
             var nameList = TestsController.GetServiceName();
             var listSize = nameList.Count;
             var newItem = new ListItem();
@@ -40,12 +34,14 @@ namespace Interface
             {
                 if (!string.IsNullOrWhiteSpace(item))
                 {
-                newItem = new ListItem();
-                newItem.Text = item;
-                newItem.Value = item;
+                    newItem = new ListItem();
+                    newItem.Text = item;
+                    newItem.Value = item;
                     servicenameList.Items.Add(newItem);
                 }
             }
+
+
 
 
 
@@ -104,7 +100,7 @@ namespace Interface
         {
             var request = new RESTRequest
             {
-                EndPoint = txtboxUrlRest.Text + txtboxParams,
+                EndPoint = txtboxUrlRest.Text + txtboxParams.Text,
                 Method = dropdownMethod.Text,
                 PostData = txtboxRestRequest.Text,
                 ContentType = contentTypeList.Text,
@@ -254,8 +250,39 @@ namespace Interface
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            var passed = 0;
+            var failed = 0;
+            var executed = 0;
+            var testsList = TestsController.GetTests(servicenameList.SelectedValue.ToString());
+            foreach (var item in testsList)
+            {
+                var testExecuted = TestsController.GetSOAPResponse(item.Uri, item.Request, User, null);
+                executed = executed + 1;
+                if (testExecuted.Response == item.Response)
+                {
+                    passed = passed + 1;
+                }
+                else
+                {
+                    failed = failed + 1;
+                }
+                
+            }
+            testeExecutate.Content = executed;
+            testeFailed.Content = failed;
+            testePassed.Content = passed;
 
-           // servicenameList.Items.Add()
+           
+        }
+
+        private void servicenameList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void servicenameList_ContextMenuOpening(object sender, System.Windows.Controls.ContextMenuEventArgs e)
+        {
+
         }
     }
 }
